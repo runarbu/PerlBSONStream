@@ -60,6 +60,11 @@ sub new {
 	
 	$self->{'stream'} = shift;
 	
+	# Defaults to STDIN
+	if (!$self->{'stream'}) {
+		$self->{'stream'} = *STDIN;
+	}
+	
 	# We need to set the strem to be binery so Windows (and maby others) do not tranlate \n
 	binmode($self->{'stream'});
 	
